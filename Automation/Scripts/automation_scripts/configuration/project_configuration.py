@@ -9,6 +9,8 @@ class ProjectConfiguration:
         self.project_display_name = project_display_name
         self.project_version = project_version
 
+        self.copyright = "Copyright (c) 2022 Benjamin Hamon"
+
 
     def get_artifact_default_parameters(self) -> dict:
         return {

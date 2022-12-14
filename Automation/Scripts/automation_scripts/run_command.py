@@ -42,6 +42,8 @@ def create_argument_parser(command_collection: List[str]) -> argparse.ArgumentPa
 def list_commands() -> List[str]:
     return [
         "automation_scripts.commands.info.InfoCommand",
+        "automation_scripts.commands.install.InstallCommand",
+        "automation_scripts.commands.run_website.RunWebsiteCommand",
     ]
 
 

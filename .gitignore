@@ -4,6 +4,7 @@
 # Distribution
 /Sources/build/
 /Sources/dist/
+/Sources/*/__metadata__.py
 
 # Log files
 *.log

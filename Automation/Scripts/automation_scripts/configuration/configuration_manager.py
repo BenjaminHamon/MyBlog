@@ -1,5 +1,8 @@
+from typing import List
+
 from automation_scripts.configuration.project_configuration import ProjectConfiguration
 from automation_scripts.configuration.project_version import ProjectVersion
+from automation_scripts.configuration.python_package import PythonPackage
 from automation_scripts.toolkit.revision_control.git_client import GitClient
 
 
@@ -24,3 +27,9 @@ def load_project_version() -> ProjectVersion:
         revision_date = revision_date,
         branch = branch,
     )
+
+
+def list_python_packages() -> List[PythonPackage]:
+    return [
+        PythonPackage(name = "bhamon_blog", path_to_sources = "Sources"),
+    ]
