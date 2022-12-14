@@ -1,6 +1,10 @@
 # Artifacts
 /Artifacts
 
+# Distribution
+/Sources/build/
+/Sources/dist/
+
 # Log files
 *.log
 

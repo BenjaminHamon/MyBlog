@@ -1,0 +1,39 @@
+{% import 'macros.html' as shared_macros -%}
+
+<!doctype html>
+<html>
+
+	<head>
+		<title>{{ title }} - {{ config['WEBSITE_TITLE'] }}</title>
+		<meta name="viewport" content="width=device-width"/>
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'layout.css') }}"/>
+	</head>
+
+	<body>
+
+		<header>
+			<nav>
+				{{ shared_macros.navigation_link('main_controller.home', 'Home', [ 'main_controller.home' ]) }}
+			</nav>
+		</header>
+
+		<main>
+
+			{% block content %}{% endblock %}
+
+		</main>
+
+		<footer>
+			{% if config['WEBSITE_VERSION'] %}
+			<p>Version {{ config['WEBSITE_VERSION'] }} ({{ config['WEBSITE_DATE'] }})</p>
+			<p>{{ config['WEBSITE_COPYRIGHT'].replace("(c)", "©") }}</p>
+			{% else %}
+			<p>Development Version</p>
+			{% endif %}
+		</footer>
+
+	</body>
+
+	{% block scripts %}{% endblock %}
+
+</html>
