@@ -1,0 +1,16 @@
+# Artifacts
+/Artifacts
+
+# Log files
+*.log
+
+# Python
+__pycache__/
+*.egg-info/
+*.pyc
+
+# Python virtual environment
+.venv/
+
+# Visual Studio Code
+/.vscode/settings.json
