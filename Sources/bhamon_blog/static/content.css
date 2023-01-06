@@ -1,0 +1,86 @@
+main > section
+{
+	display: flex;
+	flex-direction: column;
+	padding: 1em;
+	gap: 1em;
+}
+
+main > section > article
+{
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+	background-color: #fff;
+	box-shadow: 0 0 5px #cccccc;
+	padding: 1em;
+	gap: 1em;
+}
+
+.article-heading
+{
+	font-size: 2em;
+}
+
+.article-heading a
+{
+	text-decoration: none;
+}
+
+.article-metadata > .identifier
+{
+	display: none;
+}
+
+.article-metadata > ul
+{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.article-metadata > .tags
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0.4em;
+}
+
+.article-metadata > .tags > li
+{
+	padding: 0 0.4em;
+    background-color: #bbddff;
+	border-radius: 4px;
+}
+
+.article-metadata > .warnings
+{
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+	margin-bottom: 1em;
+}
+
+.article-metadata > .warnings > li
+{
+	padding: 0.5em 0.75em;
+	color: #aa0000;
+    background-color: #ffeebb;
+	font-size: 1.2em;
+}
+
+.article-text > h1
+{
+	font-size: 1.5em;
+	margin-top: 2em;
+	margin-bottom: 1em;
+}
+
+.article-text > p
+{
+	line-height: 1.5em;
+	margin: 0.5em 0;
+	text-align: justify;
+	text-indent: 1em;
+}

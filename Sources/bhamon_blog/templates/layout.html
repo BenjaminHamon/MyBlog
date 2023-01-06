@@ -7,6 +7,7 @@
 		<title>{{ title }} - {{ config['WEBSITE_TITLE'] }}</title>
 		<meta name="viewport" content="width=device-width"/>
 		<link rel="stylesheet" href="{{ url_for('static', filename = 'layout.css') }}"/>
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'content.css') }}"/>
 	</head>
 
 	<body>
@@ -14,6 +15,8 @@
 		<header>
 			<nav>
 				{{ shared_macros.navigation_link('main_controller.home', 'Home', [ 'main_controller.home' ]) }}
+				{{ shared_macros.navigation_link('main_controller.article_collection', 'Articles', [ 'main_controller.article_collection', 'main_controller.article' ]) }}
+				{{ shared_macros.navigation_link('main_controller.about', 'About', [ 'main_controller.about' ]) }}
 			</nav>
 		</header>
 

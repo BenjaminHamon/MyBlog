@@ -1,6 +1,7 @@
 import argparse
 import importlib
 import logging
+import os
 
 from automation_scripts.toolkit.automation.automation_command import AutomationCommand
 
@@ -28,8 +29,9 @@ class RunWebsiteCommand(AutomationCommand):
 
         logging.getLogger("werkzeug").setLevel(logging.WARNING)
 
+        content_directory = os.path.abspath("Content")
         application_module = importlib.import_module("bhamon_blog.application_factory")
-        application = application_module.create_application()
+        application = application_module.create_application(content_directory)
         website_link = "http://%s:%s/" % (address, port)
 
         logger.info("Website available at '%s'", website_link)

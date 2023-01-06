@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="section-for-article">
+	<article>
+		<div class="article-heading">
+			{{ article.metadata.title }}
+		</div>
+		<div class="article-metadata">
+			<p class="identifier">{{ article.metadata.identifier }}</p>
+			<ul class="warnings">
+				{% for warning in article.metadata.warnings %}
+				<li>Warning: {{ warning }}</li>
+				{% endfor %}
+			</ul>
+			<ul class="tags">
+				{% for tag in article.metadata.tags %}
+				<li>{{ tag }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="article-text">
+			{{ article.content | render_markdown | safe }}
+		</div>
+	</article>
+</section>
+{% endblock %}

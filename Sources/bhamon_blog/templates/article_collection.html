@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<section class="section-for-article-collection">
+
+	{% for article in article_collection %}
+
+	<article>
+		<div class="article-heading">
+			<a href="{{ url_for('main_controller.article', identifier_or_alias = article.metadata.title) }}">{{ article.metadata.title }}</a>
+		</div>
+		<div class="article-metadata">
+			<p class="identifier">{{ article.metadata.identifier }}</p>
+			<ul class="warnings">
+				{% for warning in article.metadata.warnings %}
+				<li>Warning: {{ warning }}</li>
+				{% endfor %}
+			</ul>
+			<ul class="tags">
+				{% for tag in article.metadata.tags %}
+				<li>{{ tag }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="article-excerpt">
+			{{ article.metadata.excerpt | render_markdown | safe }}
+		</div>
+	</article>
+
+	{% endfor %}
+
+</section>
+
+{% endblock %}
