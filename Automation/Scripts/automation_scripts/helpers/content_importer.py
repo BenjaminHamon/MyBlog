@@ -1,4 +1,5 @@
 import datetime
+import filecmp
 import glob
 import logging
 import os
@@ -23,9 +24,45 @@ class ContentImporter:
     def import_articles(self, source_directory: str, destination_directory: str, now: datetime.datetime, simulate: bool = False) -> None:
         all_content_items = self.load_content_items(source_directory, now)
 
-        self.write_index(destination_directory, all_content_items, simulate = simulate)
-        self.write_metadata(destination_directory, all_content_items, simulate = simulate)
+        self.write_index(destination_directory, [ content_item.index for content_item in all_content_items ], simulate = simulate)
+        self.write_metadata(destination_directory, [ content_item.metadata for content_item in all_content_items ], simulate = simulate)
         self.write_text(destination_directory, all_content_items, simulate = simulate)
+
+
+    def merge_metadata(self, old_directory: str, new_directory: str, simulate: bool = False) -> None:
+        old_index = self.read_index(old_directory)
+        new_index = self.read_index(new_directory)
+
+        for new_item in new_index:
+            old_item = next((x for x in old_index if x.identifier == new_item.identifier), None)
+            if old_item is None:
+                continue
+
+            new_item.aliases = list(set(old_item.aliases + new_item.aliases))
+
+        self.write_index(new_directory, new_index, simulate = simulate)
+
+        old_metadata = self.read_metadata(old_directory)
+        new_metadata = self.read_metadata(new_directory)
+
+        for new_item in new_metadata:
+            old_item = next((x for x in old_metadata if x.identifier == new_item.identifier), None)
+            if old_item is None:
+                continue
+
+            new_item.creation_date = old_item.creation_date
+
+            if old_item.reference is None or new_item.reference is None:
+                raise ValueError("Content item reference is none")
+
+            old_text_file_path = os.path.join(old_directory, old_item.reference + ".html")
+            new_text_file_path = os.path.join(new_directory, new_item.reference + ".html")
+            document_changed = not filecmp.cmp(old_text_file_path, new_text_file_path)
+
+            if not document_changed:
+                new_item.update_date = old_item.update_date
+
+        self.write_metadata(new_directory, new_metadata, simulate = simulate)
 
 
     def load_content_items(self, source_directory: str, now: datetime.datetime) -> List[ContentItem]:
@@ -85,8 +122,34 @@ class ContentImporter:
         return (document_metadata, document_text)
 
 
-    def write_index(self, destination_directory: str, all_content_items: List[ContentItem], simulate: bool = False) -> None:
-        index_for_serialization = [ content_item.index.__dict__ for content_item in all_content_items ]
+    def read_index(self, content_directory: str) -> List[IndexItem]:
+        index_file_path = os.path.join(content_directory, "Index.yaml")
+
+        with open(index_file_path, mode = "r", encoding = "utf-8") as index_file:
+            index_from_serialization: List[dict] = yaml.safe_load(index_file)
+
+        index: List[IndexItem] = []
+        for index_item_as_dict in index_from_serialization:
+            index.append(IndexItem(**index_item_as_dict))
+
+        return index
+
+
+    def read_metadata(self, content_directory: str) -> List[DocumentMetadata]:
+        metadata_file_path = os.path.join(content_directory, "Metadata.yaml")
+
+        with open(metadata_file_path, mode = "r", encoding = "utf-8") as metadata_file:
+            metadata_from_serialization: List[dict] = yaml.safe_load(metadata_file)
+
+        all_metadata: List[DocumentMetadata] = []
+        for metadata_as_dict in metadata_from_serialization:
+            all_metadata.append(DocumentMetadata(**metadata_as_dict))
+
+        return all_metadata
+
+
+    def write_index(self, destination_directory: str, all_index_items: List[IndexItem], simulate: bool = False) -> None:
+        index_for_serialization = [ index_item.__dict__ for index_item in all_index_items ]
         index_file_path = os.path.join(destination_directory, "Index.yaml")
 
         logger.debug("Writing '%s'", index_file_path)
@@ -96,8 +159,8 @@ class ContentImporter:
                 yaml.dump(index_for_serialization, index_file, Dumper = YamlDumper, sort_keys = False)
 
 
-    def write_metadata(self, destination_directory: str, all_content_items: List[ContentItem], simulate: bool = False) -> None:
-        metadata_for_serialization = [ content_item.metadata.__dict__ for content_item in all_content_items ]
+    def write_metadata(self, destination_directory: str, all_metadata: List[DocumentMetadata], simulate: bool = False) -> None:
+        metadata_for_serialization = [ metadata.__dict__ for metadata in all_metadata ]
         metadata_file_path = os.path.join(destination_directory, "Metadata.yaml")
 
         logger.debug("Writing '%s'", metadata_file_path)

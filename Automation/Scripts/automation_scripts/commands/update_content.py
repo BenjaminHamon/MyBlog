@@ -48,6 +48,12 @@ class UpdateContentCommand(AutomationCommand):
             now = now,
             simulate = simulate)
 
+        if os.path.exists(destination_directory):
+            content_importer.merge_metadata(
+                old_directory = os.path.join(destination_directory, "Articles"),
+                new_directory = os.path.join(destination_directory + ".tmp", "Articles"),
+                simulate = simulate)
+
         if not simulate:
             if os.path.exists(destination_directory):
                 shutil.rmtree(destination_directory)
