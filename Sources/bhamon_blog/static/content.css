@@ -80,6 +80,7 @@ main > section > article
 .article-heading
 {
 	font-size: 2em;
+	line-height: 1em;
 }
 
 .article-heading a
