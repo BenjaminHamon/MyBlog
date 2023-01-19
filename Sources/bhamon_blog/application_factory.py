@@ -41,7 +41,7 @@ def configure(application: flask.Flask, title: str) -> None:
     application.jinja_env.trim_blocks = True
     application.jinja_env.lstrip_blocks = True
 
-    application.jinja_env.filters["render_date"] = jinja_operations.render_date
+    application.jinja_env.filters["format_document_date"] = jinja_operations.format_document_date
     application.jinja_env.filters["render_text"] = jinja_operations.render_text
 
     application.context_processor(lambda: { "url_for": versioned_url_for })

@@ -18,6 +18,7 @@
 				<li>{{ tag }}</li>
 				{% endfor %}
 			</ul>
+			<p class="date">{{ article.metadata | format_document_date }}</p>
 		</div>
 		<div class="article-text">
 			{{ article.content | safe }}

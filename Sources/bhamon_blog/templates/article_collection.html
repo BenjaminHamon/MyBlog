@@ -26,6 +26,9 @@
 		<div class="article-excerpt">
 			{{ article.excerpt | safe }}
 		</div>
+		<div class="article-metadata">
+			<p class="date">{{ article | format_document_date }}</p>
+		</div>
 	</article>
 
 	{% endfor %}

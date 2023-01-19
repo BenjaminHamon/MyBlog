@@ -87,6 +87,13 @@ main > section > article
 	text-decoration: none;
 }
 
+.article-metadata
+{
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
 .article-metadata > .identifier
 {
 	display: none;
@@ -119,7 +126,6 @@ main > section > article
 	display: flex;
 	flex-direction: column;
 	gap: 0.5em;
-	margin-bottom: 1em;
 }
 
 .article-metadata > .warnings > li
@@ -128,6 +134,12 @@ main > section > article
 	color: #aa0000;
     background-color: #ffeebb;
 	font-size: 1.2em;
+}
+
+.article-metadata > .date
+{
+	color: #555555;
+	text-align: right;
 }
 
 .article-text > h1
