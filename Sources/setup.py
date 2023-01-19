@@ -16,7 +16,6 @@ def run_setup() -> None:
 
         "install_requires": [
             "Flask ~= 2.2.2",
-            "Markdown ~= 3.4.1",
             "python-dateutil ~= 2.8.2",
             "PyYAML ~= 6.0",
         ],

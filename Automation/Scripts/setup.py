@@ -7,7 +7,9 @@ def run_setup() -> None:
         "packages": setuptools.find_packages(include = [ "automation_scripts", "automation_scripts.*" ]),
         "python_requires": "~= 3.7",
 
-        "install_requires": [],
+        "install_requires": [
+            "Markdown ~= 3.4.1",
+        ],
 
         "extras_require": {
             "dev": [

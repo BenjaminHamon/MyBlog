@@ -1,6 +1,9 @@
 [BASIC]
 const-naming-style = snake_case
 
+[DESIGN]
+max-attributes = 10
+
 [FORMAT]
 indent-string = '    '
 max-line-length = 160
