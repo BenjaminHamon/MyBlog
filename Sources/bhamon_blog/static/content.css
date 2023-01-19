@@ -18,6 +18,14 @@ main > section > article
 }
 
 
+/* Home */
+
+.home-link > a
+{
+	text-align: center;
+}
+
+
 /* About */
 
 .about-heading

@@ -1,5 +1,5 @@
 import os
-from typing import List
+from typing import List, Optional
 
 import yaml
 
@@ -17,10 +17,10 @@ class ArticleProvider:
         self._content_directory = content_directory
 
 
-    def list_articles(self) -> List[DocumentMetadata]:
+    def list_articles(self, skip: int = 0, limit: Optional[int] = None) -> List[DocumentMetadata]:
         all_articles = self.load_all_metadata()
         all_articles.sort(key = lambda x: x.creation_date, reverse = True)
-        return all_articles
+        return all_articles[skip : skip + limit if limit is not None else None]
 
 
     def load_index(self) -> List[IndexItem]:

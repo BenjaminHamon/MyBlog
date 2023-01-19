@@ -13,7 +13,8 @@ class MainController:
 
 
     def home(self) -> str:
-        return flask.render_template("home.html", title = "Home")
+        article_collection = self._article_provider.list_articles(limit = 3)
+        return flask.render_template("home.html", title = "Home", article_collection = article_collection)
 
 
     def article_collection(self) -> str:
