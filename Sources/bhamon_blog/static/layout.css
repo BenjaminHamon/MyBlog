@@ -21,7 +21,7 @@ body
 	margin: 0 auto;
 	padding: 0;
 	min-height: 100%;
-	background-color: #eeeeee;
+	background-color: #dddddd;
 	font-family: Calibri, sans-serif;
 }
 
@@ -68,7 +68,7 @@ main
 {
 	display: flex;
 	flex-direction: column;
-	background-color: #eeeeee;
+	background-color: #dddddd;
 	line-height: 150%;
 }
 
@@ -78,7 +78,7 @@ footer
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	background-color: #eeeeee;
+	background-color: #dddddd;
 	text-align: center;
 	font-size: 80%;
 	color: #555555;
