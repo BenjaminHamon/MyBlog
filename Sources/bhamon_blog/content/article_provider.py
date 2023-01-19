@@ -18,7 +18,9 @@ class ArticleProvider:
 
 
     def list_articles(self) -> List[DocumentMetadata]:
-        return self.load_all_metadata()
+        all_articles = self.load_all_metadata()
+        all_articles.sort(key = lambda x: x.creation_date, reverse = True)
+        return all_articles
 
 
     def load_index(self) -> List[IndexItem]:
