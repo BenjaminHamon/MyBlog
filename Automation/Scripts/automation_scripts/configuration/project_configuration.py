@@ -12,6 +12,15 @@ class ProjectConfiguration:
         self.copyright = "Copyright (c) 2023 Benjamin Hamon"
 
 
+    def get_setuptools_parameters(self) -> dict:
+        return {
+            "version": self.project_version.full_identifier,
+            "author": "Benjamin Hamon",
+            "author_email": "development@benjaminhamon.com",
+            "url": "https://github.com/BenjaminHamon/MyBlog",
+        }
+
+
     def get_artifact_default_parameters(self) -> dict:
         return {
             "project": self.project_identifier,
