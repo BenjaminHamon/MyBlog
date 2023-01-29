@@ -12,6 +12,7 @@ logger = logging.getLogger("Main")
 
 def main():
     with automation_helpers.execute_in_workspace(__file__):
+        environment = configuration_manager.load_environment()
         configuration = configuration_manager.load_configuration()
         command_collection = list_commands()
 
@@ -22,7 +23,7 @@ def main():
 
         automation_helpers.log_script_information(configuration, arguments.simulate)
         arguments.command_instance.check_requirements()
-        arguments.command_instance.run(arguments, configuration = configuration, simulate = arguments.simulate)
+        arguments.command_instance.run(arguments, environment = environment, configuration = configuration, simulate = arguments.simulate)
 
 
 def create_argument_parser(command_collection: List[str]) -> argparse.ArgumentParser:
@@ -41,6 +42,7 @@ def create_argument_parser(command_collection: List[str]) -> argparse.ArgumentPa
 
 def list_commands() -> List[str]:
     return [
+        "automation_scripts.commands.distribution.DistributionCommand",
         "automation_scripts.commands.info.InfoCommand",
         "automation_scripts.commands.install.InstallCommand",
         "automation_scripts.commands.run_website.RunWebsiteCommand",
