@@ -1,8 +1,8 @@
 from typing import List
 
 from automation_scripts.configuration.project_configuration import ProjectConfiguration
-from automation_scripts.configuration.project_version import ProjectVersion
-from automation_scripts.configuration.python_package import PythonPackage
+from automation_scripts.toolkit.automation.project_version import ProjectVersion
+from automation_scripts.toolkit.python.python_package import PythonPackage
 from automation_scripts.toolkit.revision_control.git_client import GitClient
 
 

@@ -1,4 +1,4 @@
-from automation_scripts.configuration.project_version import ProjectVersion
+from automation_scripts.toolkit.automation.project_version import ProjectVersion
 
 
 class ProjectConfiguration:
