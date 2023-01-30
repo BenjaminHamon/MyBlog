@@ -20,9 +20,9 @@ Activate the virtual environment, then run the website:
 
 ```
 .venv/Scripts/activate
-python ./development/website.py --address localhost --port 5000
+python -m automation_scripts.run_command run-website --address localhost --port 5000
 
 # OR
 
-.venv/Scripts/python -m automation_scripts.run_command --address localhost --port 5000
+.venv/Scripts/python -m automation_scripts.run_command run-website --address localhost --port 5000
 ```
