@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Optional, Tuple
+from typing import Any, Callable, Optional, Tuple
 
 import flask
 import werkzeug.exceptions
@@ -16,6 +16,10 @@ class Application:
 
     def __init__(self, flask_application: flask.Flask) -> None:
         self._flask_application = flask_application
+
+
+    def __call__(self, environ: dict, start_response: Callable) -> Any:
+        return self._flask_application(environ, start_response)
 
 
     def run(self, address: Optional[str] = None, port: Optional[int] = None, debug: Optional[bool] = None) -> None:
