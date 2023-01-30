@@ -6,9 +6,6 @@
 /Sources/dist/
 /Sources/*/__metadata__.py
 
-# Imported content
-/Content/
-
 # Log files
 *.log
 
