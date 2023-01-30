@@ -10,6 +10,7 @@ def run_setup() -> None:
 
     resource_patterns = [
         'static/**/*.css',
+        'static/**/*.jpeg',
         'templates/**/*.html',
     ]
 
