@@ -49,6 +49,8 @@ class PythonPackageBuilder:
         if not simulate:
             os.makedirs(os.path.dirname(destination_path), exist_ok = True)
             shutil.copyfile(source_path, destination_path + ".tmp")
+            if os.path.exists(destination_path):
+                os.remove(destination_path)
             os.rename(destination_path + ".tmp", destination_path)
 
         logger.debug("Distribution package path: '%s'", destination_path)
