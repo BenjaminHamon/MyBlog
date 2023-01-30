@@ -19,7 +19,7 @@ class DistributionCommand(AutomationCommand):
 
 
     def configure_argument_parser(self, subparsers: argparse._SubParsersAction) -> argparse.ArgumentParser:
-        local_parser = subparsers.add_parser("distribution", help = "execute commands related to distribution")
+        local_parser: argparse.ArgumentParser = subparsers.add_parser("distribution", help = "execute commands related to distribution")
 
         local_subparsers = local_parser.add_subparsers(title = "commands", metavar = "<command>")
         local_subparsers.required = True
@@ -28,6 +28,7 @@ class DistributionCommand(AutomationCommand):
             _SetupCommand,
             _PackageCommand,
             _UploadCommand,
+            _UploadForReleaseCommand,
         ]
 
         for command in command_collection:
@@ -93,7 +94,8 @@ class _PackageCommand(AutomationCommand):
 
         logger.info("Building python distribution packages")
         for python_package in all_python_packages:
-            python_package_builder.build_distribution_package(python_package, version, output_directory, simulate = simulate)
+            python_package_builder.build_distribution_package(
+                python_package, version, os.path.join(output_directory, python_package.name), simulate = simulate)
 
 
 class _UploadCommand(AutomationCommand):
@@ -107,16 +109,18 @@ class _UploadCommand(AutomationCommand):
         pass
 
 
-    def run(self, arguments: argparse.Namespace, simulate: bool, **kwargs) -> None:
+    def run(self, arguments: argparse.Namespace, simulate: bool, **kwargs) -> None: # pylint: disable = too-many-locals
         python_executable = sys.executable
         project_environment: ProjectEnvironment = kwargs["environment"]
         project_configuration: ProjectConfiguration = kwargs["configuration"]
+        target_environment: str = "Development"
 
         version = project_configuration.project_version.full_identifier
         distribution_directory = os.path.join("Artifacts", "Distributions")
         all_python_packages = configuration_manager.list_python_packages()
+        package_repository_url = project_environment.get_python_package_repository_url(target_environment)
 
-        python_distribution_manager = self._create_distribution_manager(python_executable, project_environment.get_python_package_repository_url())
+        python_distribution_manager = _create_distribution_manager(python_executable, package_repository_url)
 
         logger.info("Uploading python distribution packages")
         for python_package in all_python_packages:
@@ -125,13 +129,49 @@ class _UploadCommand(AutomationCommand):
             python_distribution_manager.upload_package(package_path, simulate = simulate)
 
 
-    def _create_distribution_manager(self, python_executable: str, repository_url: str) -> PythonTwineDistributionManager:
-        credentials_provider = InteractiveCredentialsProvider()
-        credentials = credentials_provider.get_credentials(repository_url)
+class _UploadForReleaseCommand(AutomationCommand):
 
-        python_distribution_manager = PythonTwineDistributionManager(python_executable)
-        python_distribution_manager.repository_url = repository_url
-        python_distribution_manager.username = credentials.username
-        python_distribution_manager.password = credentials.secret
 
-        return python_distribution_manager
+    def configure_argument_parser(self, subparsers: argparse._SubParsersAction) -> argparse.ArgumentParser:
+        return subparsers.add_parser("upload-for-release", help = "upload the distribution packages for release")
+
+
+    def check_requirements(self) -> None:
+        pass
+
+
+    def run(self, arguments: argparse.Namespace, simulate: bool, **kwargs) -> None: # pylint: disable = too-many-locals
+        python_executable = sys.executable
+        project_environment: ProjectEnvironment = kwargs["environment"]
+        project_configuration: ProjectConfiguration = kwargs["configuration"]
+        target_environment: str = "Production"
+
+        version = project_configuration.project_version.full_identifier
+        version_for_release = project_configuration.project_version.identifier
+        distribution_directory = os.path.join("Artifacts", "Distributions")
+        all_python_packages = configuration_manager.list_python_packages()
+        package_repository_url = project_environment.get_python_package_repository_url(target_environment)
+
+        python_package_builder = PythonPackageBuilder(python_executable)
+        python_distribution_manager = _create_distribution_manager(python_executable, package_repository_url)
+
+        logger.info("Uploading python distribution packages")
+        for python_package in all_python_packages:
+            python_package_builder.copy_distribution_package_for_release(
+                python_package, version, version_for_release, os.path.join(distribution_directory, python_package.name), simulate = simulate)
+
+            archive_name = python_package.name_for_file_system + "-" + version_for_release
+            package_path = os.path.join(distribution_directory, python_package.name, archive_name + "-py3-none-any.whl")
+            python_distribution_manager.upload_package(package_path, simulate = simulate)
+
+
+def _create_distribution_manager(python_executable: str, repository_url: str) -> PythonTwineDistributionManager:
+    credentials_provider = InteractiveCredentialsProvider()
+    credentials = credentials_provider.get_credentials(repository_url)
+
+    python_distribution_manager = PythonTwineDistributionManager(python_executable)
+    python_distribution_manager.repository_url = repository_url
+    python_distribution_manager.username = credentials.username
+    python_distribution_manager.password = credentials.secret
+
+    return python_distribution_manager

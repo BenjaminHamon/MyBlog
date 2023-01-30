@@ -8,9 +8,7 @@ from automation_scripts.toolkit.revision_control.git_client import GitClient
 
 
 def load_environment() -> ProjectEnvironment:
-    return ProjectEnvironment(
-        python_package_repository_url = "https://nexus.benjaminhamon.com/repository/python-packages/",
-    )
+    return ProjectEnvironment()
 
 
 def load_configuration() -> ProjectConfiguration:
