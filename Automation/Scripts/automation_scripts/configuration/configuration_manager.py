@@ -27,7 +27,7 @@ def load_project_version() -> ProjectVersion:
     branch = git_client.get_current_branch()
 
     return ProjectVersion(
-        identifier = "1.0.0",
+        identifier = "1.1.0",
         revision = revision,
         revision_date = revision_date,
         branch = branch,
