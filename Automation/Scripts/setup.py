@@ -10,6 +10,7 @@ def run_setup() -> None:
         "install_requires": [
             "Markdown ~= 3.4.1",
             "PyYAML ~= 6.0",
+            "requests ~= 2.28.2",
             "twine ~= 4.0.2",
         ],
 

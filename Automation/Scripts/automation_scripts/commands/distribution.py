@@ -7,6 +7,7 @@ from automation_scripts.configuration import configuration_manager
 from automation_scripts.configuration.project_configuration import ProjectConfiguration
 from automation_scripts.configuration.project_environment import ProjectEnvironment
 from automation_scripts.toolkit.automation.automation_command import AutomationCommand
+from automation_scripts.toolkit.automation.automation_command_group import AutomationCommandGroup
 from automation_scripts.toolkit.python.python_package_builder import PythonPackageBuilder
 from automation_scripts.toolkit.python.python_twine_distribution_manager import PythonTwineDistributionManager
 from automation_scripts.toolkit.security.interactive_credentials_provider import InteractiveCredentialsProvider
@@ -15,14 +16,11 @@ from automation_scripts.toolkit.security.interactive_credentials_provider import
 logger = logging.getLogger("Main")
 
 
-class DistributionCommand(AutomationCommand):
+class DistributionCommand(AutomationCommandGroup):
 
 
     def configure_argument_parser(self, subparsers: argparse._SubParsersAction) -> argparse.ArgumentParser:
         local_parser: argparse.ArgumentParser = subparsers.add_parser("distribution", help = "execute commands related to distribution")
-
-        local_subparsers = local_parser.add_subparsers(title = "commands", metavar = "<command>")
-        local_subparsers.required = True
 
         command_collection = [
             _SetupCommand,
@@ -31,20 +29,13 @@ class DistributionCommand(AutomationCommand):
             _UploadForReleaseCommand,
         ]
 
-        for command in command_collection:
-            command_instance = command()
-            command_parser = command_instance.configure_argument_parser(local_subparsers)
-            command_parser.set_defaults(command_instance = command_instance)
+        self.add_commands(local_parser, command_collection)
 
         return local_parser
 
 
     def check_requirements(self) -> None:
         pass
-
-
-    def run(self, arguments: argparse.Namespace, simulate: bool, **kwargs) -> None:
-        raise NotImplementedError("Run is not supported for a command group")
 
 
 class _SetupCommand(AutomationCommand):
