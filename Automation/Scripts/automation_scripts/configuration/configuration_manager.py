@@ -16,6 +16,11 @@ def load_configuration() -> ProjectConfiguration:
         project_identifier = "MyBlog",
         project_display_name = "MyBlog",
         project_version = load_project_version(),
+        copyright_text = "Copyright (c) 2023 Benjamin Hamon",
+        author = "Benjamin Hamon",
+        author_email = "development@benjaminhamon.com",
+        project_url = "https://github.com/BenjaminHamon/MyBlog",
+        content_identifier = "Samples",
     )
 
 
