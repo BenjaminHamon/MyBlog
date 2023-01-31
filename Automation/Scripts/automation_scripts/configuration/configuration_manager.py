@@ -20,7 +20,7 @@ def load_configuration() -> ProjectConfiguration:
         author = "Benjamin Hamon",
         author_email = "development@benjaminhamon.com",
         project_url = "https://github.com/BenjaminHamon/MyBlog",
-        content_identifier = "Samples",
+        content_identifier = "ThoughtsAboutFiction",
     )
 
 
