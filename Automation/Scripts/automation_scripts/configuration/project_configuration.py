@@ -11,6 +11,8 @@ class ProjectConfiguration:
 
         self.copyright = "Copyright (c) 2023 Benjamin Hamon"
 
+        self.content_identifier = "Samples"
+
 
     def get_setuptools_parameters(self) -> dict:
         return {
