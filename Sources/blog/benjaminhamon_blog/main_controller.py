@@ -33,3 +33,7 @@ class MainController:
 
     def about(self) -> str:
         return flask.render_template("about.html", title = "About")
+
+
+    def contact(self) -> str:
+        return flask.render_template("contact.html", title = "Contact")
