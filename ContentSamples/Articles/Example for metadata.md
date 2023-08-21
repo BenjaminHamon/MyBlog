@@ -2,6 +2,7 @@
 
 Identifier: 571b1603-2146-4aa5-8442-0679873c8600
 Title: Example for metadata
+Author: Benjamin Hamon
 
 Tags:
 - Topics::Fiction
@@ -10,13 +11,15 @@ Tags:
 - Media::MyBook::TheMainCharacter
 
 Warnings:
-- Full spoilers for MyBook
-- Mature themes
+- Spoilers::MyBook
+- Topics::AdultThemes
 
 Excerpt: |
   A captivating article about something and this is its excerpt.
 
 ---
 
+
+<p class="warning">This article contains heavy spoilers for MyBook.</p>
 
 No, actually it's boring.

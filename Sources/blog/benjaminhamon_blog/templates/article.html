@@ -1,27 +1,34 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<section class="section-for-article">
-	<article>
-		<div class="article-heading">
+<section>
+	<article class="article-entry">
+		<div class="heading">
 			{{ article.metadata.title }}
 		</div>
-		<div class="article-metadata">
+        <div class="credits">
+            <p class="author">by {{ article.metadata.author }}</span></p>
+        </div>
+		<div class="extra">
 			<p class="identifier">{{ article.metadata.identifier }}</p>
-			<ul class="warnings">
-				{% for warning in article.metadata.warnings %}
-				<li>Warning: {{ warning }}</li>
-				{% endfor %}
-			</ul>
-			<ul class="tags">
-				{% for tag in article.metadata.tags %}
-				<li>{{ tag }}</li>
-				{% endfor %}
-			</ul>
-			<p class="date">{{ article.metadata | format_document_date }}</p>
 		</div>
-		<hr class="article-separator"/>
-		<div class="article-text">
+        <div class="tags">
+			<ul>
+				{% for tag in article.metadata.tags %}
+				<li class="information">{{ tag }}</li>
+				{% endfor %}
+			</ul>
+			<ul>
+				{% for warning in article.metadata.warnings %}
+				<li class="warning">{{ warning }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="date">
+			<p>{{ article.metadata | format_document_date }}</p>
+		</div>
+		<hr class="separator"/>
+		<div class="text">
 			{{ article.content | safe }}
 		</div>
 	</article>

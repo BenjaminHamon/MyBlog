@@ -12,6 +12,7 @@ def test_format_date():
         "identifier": "MyIdentifier",
         "reference": "MyReference",
         "title": "MyTitle",
+        "author": "MyAuthor",
         "tags": [],
         "warnings": [],
         "excerpt": "",

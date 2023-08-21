@@ -8,6 +8,7 @@ class DocumentMetadata:
     identifier: str
     reference: str
     title: str
+    author: str
     tags: List[str]
     warnings: List[str]
     excerpt: str

@@ -64,6 +64,7 @@ class ArticleProvider:
                     identifier = document_metadata_from_yaml["identifier"],
                     reference = document_metadata_from_yaml["reference"],
                     title = document_metadata_from_yaml["title"],
+                    author = document_metadata_from_yaml["author"],
                     tags = document_metadata_from_yaml.get("tags", []),
                     warnings = document_metadata_from_yaml.get("warnings", []),
                     excerpt = document_metadata_from_yaml.get("excerpt", []),
