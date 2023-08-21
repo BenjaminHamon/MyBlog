@@ -3,6 +3,9 @@ import logging
 import sys
 from typing import List
 
+from bhamon_development_toolkit.asyncio_extensions.asyncio_context import AsyncioContext
+from bhamon_development_toolkit.automation.automation_command import AutomationCommand
+
 from automation_scripts.configuration import configuration_manager
 from automation_scripts.helpers import automation_helpers
 
@@ -18,12 +21,19 @@ def main():
 
         argument_parser = create_argument_parser(command_collection)
         arguments = argument_parser.parse_args()
+        command_instance: AutomationCommand = arguments.command_instance
 
         automation_helpers.configure_logging(arguments)
 
         automation_helpers.log_script_information(configuration, arguments.simulate)
-        arguments.command_instance.check_requirements()
-        arguments.command_instance.run(arguments, environment = environment, configuration = configuration, simulate = arguments.simulate)
+        command_instance.check_requirements(arguments, environment = environment, configuration = configuration)
+
+        if type(arguments.command_instance).__name__ == "RunWebsiteCommand": # Flask application running is not awaitable
+            command_instance.run(arguments, environment = environment, configuration = configuration, simulate = arguments.simulate)
+
+        else:
+            asyncio_context = AsyncioContext()
+            asyncio_context.run(command_instance.run_async(arguments, environment = environment, configuration = configuration, simulate = arguments.simulate))
 
 
 def create_argument_parser(command_collection: List[str]) -> argparse.ArgumentParser:
@@ -42,11 +52,13 @@ def create_argument_parser(command_collection: List[str]) -> argparse.ArgumentPa
 
 def list_commands() -> List[str]:
     return [
+        "automation_scripts.commands.clean.CleanCommand",
         "automation_scripts.commands.content.ContentCommand",
         "automation_scripts.commands.distribution.DistributionCommand",
         "automation_scripts.commands.info.InfoCommand",
-        "automation_scripts.commands.install.InstallCommand",
+        "automation_scripts.commands.lint.LintCommand",
         "automation_scripts.commands.run_website.RunWebsiteCommand",
+        "automation_scripts.commands.test.TestCommand",
     ]
 
 

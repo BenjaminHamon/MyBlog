@@ -3,7 +3,7 @@
 
 ## Overview
 
-MyBlog is a personal website for Benjamin Hamon, hosted at blog.benjaminhamon.com.
+MyBlog is a personal website for Benjamin Hamon, hosted at [blog.benjaminhamon.com](https://blog.benjaminhamon.com/).
 
 The project is open source software. See [About](about.md) for more information.
 

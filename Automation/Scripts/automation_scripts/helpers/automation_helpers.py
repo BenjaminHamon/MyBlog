@@ -1,17 +1,17 @@
 import contextlib
-import glob
 import logging
 import os
-from typing import Generator, List
+from typing import Generator
 
-from automation_scripts.configuration.project_configuration import ProjectConfiguration
-from automation_scripts.toolkit.automation import automation_helpers as automation_helpers_from_toolkit
-from automation_scripts.toolkit.revision_control import git_helpers
+from bhamon_development_toolkit.automation import automation_helpers as automation_helpers_from_toolkit
+from bhamon_development_toolkit.revision_control import git_helpers
 
 # Exposing some helpers from toolkit directly
-from automation_scripts.toolkit.automation.automation_helpers import configure_logging # pylint: disable = unused-import
-from automation_scripts.toolkit.automation.automation_helpers import create_argument_parser # pylint: disable = unused-import
-from automation_scripts.toolkit.automation.automation_helpers import create_command_instance # pylint: disable = unused-import
+from bhamon_development_toolkit.automation.automation_helpers import configure_logging # pylint: disable = unused-import
+from bhamon_development_toolkit.automation.automation_helpers import create_argument_parser # pylint: disable = unused-import
+from bhamon_development_toolkit.automation.automation_helpers import create_command_instance # pylint: disable = unused-import
+
+from automation_scripts.configuration.project_configuration import ProjectConfiguration
 
 
 logger = logging.getLogger("Main")
@@ -33,10 +33,3 @@ def log_script_information(configuration: ProjectConfiguration, simulate: bool =
     logger.info("Branch: '%s', Revision: '%s'", configuration.project_version.branch, configuration.project_version.revision)
     logger.info("Script executing in '%s'", os.getcwd())
     logger.info("")
-
-
-def list_package_data(package: str, pattern_collection: List[str]) -> List[str]:
-    all_files = []
-    for pattern in pattern_collection:
-        all_files += glob.glob(package + "/" + pattern, recursive = True)
-    return [ os.path.relpath(path, package) for path in all_files ]

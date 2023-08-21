@@ -2,6 +2,7 @@
 
 Identifier: 73a0f613-d7ab-42a8-bd08-4d30589dcae5
 Title: Example for Markdown syntax
+Author: Benjamin Hamon
 
 Excerpt: |
   Dummy text with markdown syntax.

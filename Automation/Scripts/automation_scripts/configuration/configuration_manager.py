@@ -1,10 +1,10 @@
-from typing import List
+import json
+
+from bhamon_development_toolkit.automation.project_version import ProjectVersion
+from bhamon_development_toolkit.revision_control.git_client import GitClient
 
 from automation_scripts.configuration.project_configuration import ProjectConfiguration
 from automation_scripts.configuration.project_environment import ProjectEnvironment
-from automation_scripts.toolkit.automation.project_version import ProjectVersion
-from automation_scripts.toolkit.python.python_package import PythonPackage
-from automation_scripts.toolkit.revision_control.git_client import GitClient
 
 
 def load_environment() -> ProjectEnvironment:
@@ -12,19 +12,23 @@ def load_environment() -> ProjectEnvironment:
 
 
 def load_configuration() -> ProjectConfiguration:
+    json_file_path = "ProjectConfiguration.json"
+    with open(json_file_path, mode = "r", encoding = "utf-8") as json_file:
+        project_configuration_as_dict = json.load(json_file)
+
     return ProjectConfiguration(
-        project_identifier = "MyBlog",
-        project_display_name = "MyBlog",
-        project_version = load_project_version(),
-        copyright_text = "Copyright (c) 2023 Benjamin Hamon",
-        author = "Benjamin Hamon",
-        author_email = "development@benjaminhamon.com",
-        project_url = "https://github.com/BenjaminHamon/MyBlog",
+        project_identifier = project_configuration_as_dict["ProjectIdentifier"],
+        project_display_name = project_configuration_as_dict["ProjectDisplayName"],
+        project_version = load_project_version(project_configuration_as_dict["ProjectVersionIdentifier"]),
+        copyright_text = project_configuration_as_dict["Copyright"],
+        author = project_configuration_as_dict["Author"],
+        author_email = project_configuration_as_dict["AuthorEmail"],
+        project_url = project_configuration_as_dict["ProjectUrl"],
         content_identifier = "ThoughtsAboutFiction",
     )
 
 
-def load_project_version() -> ProjectVersion:
+def load_project_version(identifier: str) -> ProjectVersion:
     git_client = GitClient("git")
 
     revision = git_client.get_current_revision()
@@ -32,14 +36,8 @@ def load_project_version() -> ProjectVersion:
     branch = git_client.get_current_branch()
 
     return ProjectVersion(
-        identifier = "1.1.0",
+        identifier = identifier,
         revision = revision,
         revision_date = revision_date,
         branch = branch,
     )
-
-
-def list_python_packages() -> List[PythonPackage]:
-    return [
-        PythonPackage(name = "bhamon_blog", path_to_sources = "Sources"),
-    ]

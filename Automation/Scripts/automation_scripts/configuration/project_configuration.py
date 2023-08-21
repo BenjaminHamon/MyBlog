@@ -1,4 +1,8 @@
-from automation_scripts.toolkit.automation.project_version import ProjectVersion
+import os
+from typing import List
+
+from bhamon_development_toolkit.automation.project_version import ProjectVersion
+from bhamon_development_toolkit.python.python_package import PythonPackage
 
 
 class ProjectConfiguration:
@@ -27,18 +31,27 @@ class ProjectConfiguration:
         self.content_identifier = content_identifier
 
 
-    def get_setuptools_parameters(self) -> dict:
-        return {
-            "version": self.project_version.full_identifier,
-            "author": self.author,
-            "author_email": self.author_email,
-            "url": self.project_url,
-        }
-
-
     def get_artifact_default_parameters(self) -> dict:
         return {
             "project": self.project_identifier,
             "version": self.project_version.identifier,
             "revision": self.project_version.revision_short,
         }
+
+
+    def list_automation_packages(self) -> List[PythonPackage]:
+        return [
+            PythonPackage(
+                identifier = "automation-scripts",
+                path_to_sources = os.path.join("Automation", "Scripts"),
+                path_to_tests = os.path.join("Automation", "Tests")),
+        ]
+
+
+    def list_python_packages(self) -> List[PythonPackage]:
+        return [
+            PythonPackage(
+                identifier = "benjaminhamon-blog",
+                path_to_sources = os.path.join("Sources", "blog"),
+                path_to_tests = os.path.join("Tests", "blog")),
+        ]

@@ -110,6 +110,7 @@ class ContentImporter:
                 identifier = document_metadata_from_yaml["Identifier"],
                 reference = None,
                 title = document_metadata_from_yaml["Title"],
+                author = document_metadata_from_yaml["Author"],
                 tags = document_metadata_from_yaml.get("Tags", []),
                 warnings = document_metadata_from_yaml.get("Warnings", []),
                 excerpt = document_metadata_from_yaml.get("Excerpt", []),

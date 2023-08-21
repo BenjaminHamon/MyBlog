@@ -5,11 +5,12 @@
 		"*.html": "jinja-html",
 	},
 
+	"python.analysis.extraPaths": [ "./Automation/Setup" ],
 	"python.analysis.typeCheckingMode": "basic",
 
 	"python.linting.pylintEnabled": true,
 	"python.linting.pylintArgs": [ "--rcfile", "${workspaceFolder}/pylintrc" ],
 
 	"python.testing.pytestEnabled": true,
-	"python.testing.pytestArgs": [ "-c", "${workspaceFolder}/pytest.ini" ],
+	"python.testing.pytestArgs": [ "-c", "${workspaceFolder}/pytest.ini", "Automation", "Tests" ],
 }
