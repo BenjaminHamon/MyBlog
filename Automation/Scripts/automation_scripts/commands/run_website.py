@@ -29,9 +29,10 @@ class RunWebsiteCommand(AutomationCommand):
 
         logging.getLogger("werkzeug").setLevel(logging.WARNING)
 
+        title = "Thoughts About Fiction"
         content_directory = os.path.abspath("Content")
         application_module = importlib.import_module("benjaminhamon_blog.application_factory")
-        application = application_module.create_application(content_directory)
+        application = application_module.create_application(title, content_directory)
         website_link = "http://%s:%s/" % (address, port)
 
         logger.info("Website available at '%s'", website_link)

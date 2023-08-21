@@ -17,14 +17,14 @@ main_logger = logging.getLogger("Website")
 request_logger = logging.getLogger("Request")
 
 
-def create_application(content_directory: str) -> Application:
+def create_application(title: str, content_directory: str) -> Application:
     article_provider = ArticleProvider(os.path.join(content_directory, "Articles"))
     main_controller = MainController(article_provider)
 
     flask_application = flask.Flask("benjaminhamon_blog")
     application = Application(flask_application)
 
-    configure(flask_application, "Benjamin Hamon's blog")
+    configure(flask_application, title)
     register_handlers(flask_application, application)
     register_routes(flask_application, main_controller)
 
@@ -59,6 +59,7 @@ def register_routes(application: flask.Flask, main_controller: MainController) -
     add_url_rule(application, "/about", [ "GET" ],  main_controller.about)
     add_url_rule(application, "/article_collection", [ "GET" ], main_controller.article_collection)
     add_url_rule(application, "/article/<identifier_or_alias>", [ "GET" ], main_controller.article)
+    add_url_rule(application, "/contact", [ "GET" ],  main_controller.contact)
 
 
 def add_url_rule(application: flask.Flask, path: str, methods: List[str], handler: Callable, **kwargs) -> None:
