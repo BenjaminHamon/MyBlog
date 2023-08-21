@@ -1,5 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<p>{{ message }} ({{ status_code }})</p>
+
+<section>
+    <article class="error-message">
+        <p>{{ message }} ({{ status_code }})</p>
+    </article>
+</section>
+
 {% endblock %}
