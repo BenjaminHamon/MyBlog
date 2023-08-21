@@ -1,6 +1,7 @@
 - identifier: 8e4626b5-6958-4905-b20d-484832b87cf9
   reference: Arcane_-_Powder_and_Jinx
   title: Arcane - Powder and Jinx
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Characters
@@ -8,175 +9,189 @@
   - Media::Arcane::Jinx
   - Media::Arcane::Powder
   warnings:
-  - Full spoilers for Arcane season 1.
+  - Spoilers::Arcane
   excerpt: In-depth analysis for the characters Powder and Jinx from Arcane.
   creation_date: 2021-12-04 15:20:00+00:00
-  update_date: 2021-12-04 15:20:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 63f729e1-27fe-473f-8a31-a6b962c78710
   reference: Arcane_-_Relation_to_Death
   title: Arcane - Relation to Death
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Themes
   - Media::Arcane
   warnings:
-  - Full spoilers for Arcane season 1.
+  - Spoilers::Arcane
   excerpt: Analyzing how suicide and death are portrayed in Arcane. Part 2.
   creation_date: 2022-02-06 11:36:00+00:00
-  update_date: 2022-02-06 11:36:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: aa468fee-d93d-4b57-9bd4-9bfdfdc18db8
   reference: Arcane_-_Silco's_motivation
   title: Arcane - Silco's motivation
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Characters
   - Media::Arcane
   - Media::Arcane::Silco
   warnings:
-  - Full spoilers for Arcane season 1.
+  - Spoilers::Arcane
   excerpt: Analyzing Silco's character and trying to pinpoint what he is trying to
     accomplish.
   creation_date: 2022-01-12 17:55:00+00:00
-  update_date: 2022-01-12 17:55:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 113148e9-1079-4c3d-b677-0c19adfde2a4
   reference: Arcane_-_Storytelling
   title: Arcane - Storytelling
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Storytelling
   - Media::Arcane
   warnings:
-  - Full spoilers for Arcane season 1.
+  - Spoilers::Arcane
   excerpt: A few points about the storytelling in Arcane, and its pacing.
   creation_date: 2021-12-15 11:48:00+00:00
-  update_date: 2021-12-15 11:48:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 376fbcec-153e-4d71-9240-3321eef78ddd
   reference: Arcane_-_The_Arms_Race
   title: Arcane - The Arms Race
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Themes
   - Media::Arcane
   warnings:
-  - Full spoilers for Arcane season 1.
+  - Spoilers::Arcane
   excerpt: Defining the concept of the arms race in Arcane, and listing evidence for
     it.
   creation_date: 2021-12-28 14:52:00+00:00
-  update_date: 2021-12-28 14:52:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: db8d8a91-7ede-45ed-9637-ce5f7972c92c
   reference: Arcane_-_The_Portrayal_of_Suicide
   title: Arcane - The Portrayal of Suicide
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Themes
   - Media::Arcane
   warnings:
-  - Full spoilers for Arcane season 1.
+  - Spoilers::Arcane
   excerpt: Analyzing how suicide and death are portrayed in Arcane.
   creation_date: 2022-01-23 14:39:00+00:00
-  update_date: 2022-01-23 14:39:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 6ba59df7-3f98-4ed4-9004-52e4148aa66e
   reference: Arcane_-_The_Rocket_Aftermath
   title: Arcane - The Rocket Aftermath
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Speculation
   - Media::Arcane
   warnings:
-  - Full spoilers for Arcane season 1.
+  - Spoilers::Arcane
   excerpt: Speculation about the Arcane season 1 ending and its pending resolution.
   creation_date: 2022-01-04 19:17:00+00:00
-  update_date: 2022-01-04 19:17:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 3e0135e4-7bc1-4fb1-9f72-fe61d4243ece
   reference: Arcane_-_Vi_stands_for_violence
   title: Arcane - Vi stands for violence
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Characters
   - Media::Arcane
   - Media::Arcane::Vi
   warnings:
-  - Full spoilers for Arcane season 1.
+  - Spoilers::Arcane
   excerpt: Analyzing Vi from Arcane, particularly in regard to violence.
   creation_date: 2022-04-28 14:07:00+00:00
-  update_date: 2022-04-28 14:07:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 7b6c7eeb-fabb-45d2-be23-ffc80b5c092c
   reference: Don't_Look_Up
   title: Don't Look Up
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::QuickThoughts
   - Media::DontLookUp
   warnings:
-  - Spoilers for the movie Don't Look Up.
+  - Spoilers::DontLookUp
   excerpt: Quick general thoughts and opinion.
   creation_date: 2022-03-06 11:04:00+00:00
-  update_date: 2022-03-06 11:04:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 5777d7ce-a54f-48eb-9ca0-99427d224d8e
   reference: Life_Is_Strange_-_You_only_wanted_to_be_popular
   title: Life Is Strange - You only wanted to be popular
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Media::LifeIsStrange
   warnings:
-  - Spoilers for the original Life Is Strange game.
+  - Spoilers::LifeIsStrange
   excerpt: Some thoughts about Life Is Strange commenting on the player's expected
     behavior.
   creation_date: 2022-06-25 15:25:00+00:00
-  update_date: 2022-06-25 15:25:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 32e9a571-3ab5-4598-ad31-89add3f5c32e
   reference: Wheel_of_Time_-_A_reread_of_the_Eye_of_the_World
   title: Wheel of Time - A reread of the Eye of the World
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Media::WheelOfTime
   warnings:
-  - Spoilers for the Wheel of Time, for the first book the Eye of the World.
+  - Spoilers::WheelOfTime
   excerpt: Thoughts from rereading the Eye of the World.
   creation_date: 2022-02-20 14:24:00+00:00
-  update_date: 2022-02-20 14:24:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: d42da6cb-73a2-4836-80c9-656a6c7e5fb6
   reference: Wheel_of_Time_-_Brainstorming_to_structure_the_early_story
   title: Wheel of Time - Brainstorming to structure the early story
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Storytelling
   - Media::WheelOfTime
   warnings:
-  - Full spoilers for the Wheel of Time, the books and the show.
+  - Spoilers::WheelOfTime
   excerpt: Attempting to elaborate a structure for the early part of the Wheel of
     Time.
   creation_date: 2022-03-27 12:52:00+00:00
-  update_date: 2022-03-27 12:52:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 1017ac53-81ed-4867-a6a8-b85a1e0cc9fc
   reference: Wheel_of_Time_-_Min
   title: Wheel of Time - Min
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Characters
   - Media::WheelOfTime
   - Media::WheelOfTime::Min
   warnings:
-  - Full spoilers for the Wheel of Time, the show up to season 1 and all books.
+  - Spoilers::WheelOfTime
   excerpt: Analysis for the character Min in early Wheel of Time.
   creation_date: 2022-03-16 16:24:00+00:00
-  update_date: 2022-03-16 16:24:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 224aa652-84a0-427c-bced-af591de2ed3c
   reference: Wheel_of_Time_-_Nynaeve
   title: Wheel of Time - Nynaeve
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Characters
   - Media::WheelOfTime
   - Media::WheelOfTime::Nynaeve
   warnings:
-  - Full spoilers for the Wheel of Time, the show up to season 1 and all books.
+  - Spoilers::WheelOfTime
   excerpt: Analysis for the character Nynaeve in early Wheel of Time.
   creation_date: 2022-03-02 16:07:00+00:00
-  update_date: 2022-03-02 16:07:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
 - identifier: 3bda8eba-0b1e-4b92-8d9e-181d6d14cf3d
   reference: Wheel_of_Time_-_Who_is_Alanna
   title: Wheel of Time - Who is Alanna
+  author: Benjamin Hamon
   tags:
   - Topics::Fiction
   - Topics::Fiction::Characters
@@ -184,8 +199,8 @@
   - Media::WheelOfTime
   - Media::WheelOfTime::Alanna
   warnings:
-  - Full spoilers for the Wheel of Time, the show up to season 1 and all books.
+  - Spoilers::WheelOfTime
   excerpt: Analysis and speculation about Alanna, who her character is and will be,
     using knowledge from the books.
   creation_date: 2022-02-13 13:55:00+00:00
-  update_date: 2022-02-13 13:55:00+00:00
+  update_date: 2023-08-21 16:44:14+00:00
