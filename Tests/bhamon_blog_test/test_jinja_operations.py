@@ -2,8 +2,8 @@
 
 import datetime
 
-from bhamon_blog import jinja_operations
-from bhamon_blog.content.document_metadata import DocumentMetadata
+from benjaminhamon_blog import jinja_operations
+from benjaminhamon_blog.content.document_metadata import DocumentMetadata
 
 
 def test_format_date():
