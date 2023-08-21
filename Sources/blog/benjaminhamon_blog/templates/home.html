@@ -8,7 +8,7 @@
         <div class="text">
             <p>Welcome,</p>
             <p>This unamed website is a blog where I post articles about stuff.</p>
-			<p>Enjoy and please share your thoughts!</p>
+            <p>Enjoy and please share your thoughts!</p>
         </div>
     </article>
 
@@ -16,43 +16,43 @@
 
 <section>
 
-	{% for article in article_collection %}
+    {% for article in article_collection %}
 
-	<article class="article-entry">
-		<div class="heading">
-			<a href="{{ url_for('main_controller.article', identifier_or_alias = article.reference) }}">{{ article.title }}</a>
-		</div>
+    <article class="article-entry">
+        <div class="heading">
+            <a href="{{ url_for('main_controller.article', identifier_or_alias = article.reference) }}">{{ article.title }}</a>
+        </div>
         <div class="credits">
             <p class="author">by {{ article.author }}</span></p>
         </div>
-		<div class="extra">
-			<p class="identifier">{{ article.identifier }}</p>
-		</div>
-		<div class="tags">
-			<ul>
-				{% for tag in article.tags %}
-				<li class="information">{{ tag }}</li>
-				{% endfor %}
-			</ul>
-			<ul>
-				{% for warning in article.warnings %}
-				<li class="warning">{{ warning }}</li>
-				{% endfor %}
-			</ul>
-		</div>
-		<div class="excerpt">
-			{{ article.excerpt | safe }}
-		</div>
-		<div class="date">
-			<p>{{ article | format_document_date }}</p>
-		</div>
-	</article>
+        <div class="extra">
+            <p class="identifier">{{ article.identifier }}</p>
+        </div>
+        <div class="tags">
+            <ul>
+                {% for tag in article.tags %}
+                <li class="information">{{ tag }}</li>
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for warning in article.warnings %}
+                <li class="warning">{{ warning }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="excerpt">
+            {{ article.excerpt | safe }}
+        </div>
+        <div class="date">
+            <p>{{ article | format_document_date }}</p>
+        </div>
+    </article>
 
-	{% endfor %}
+    {% endfor %}
 
-	<article class="link-entry">
-		<a href="{{ url_for('main_controller.article_collection') }}">See more articles...</a>
-	</article>
+    <article class="link-entry">
+        <a href="{{ url_for('main_controller.article_collection') }}">See more articles...</a>
+    </article>
 
 </section>
 

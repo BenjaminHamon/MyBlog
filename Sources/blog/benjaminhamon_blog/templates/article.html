@@ -2,35 +2,35 @@
 
 {% block content %}
 <section>
-	<article class="article-entry">
-		<div class="heading">
-			{{ article.metadata.title }}
-		</div>
+    <article class="article-entry">
+        <div class="heading">
+            {{ article.metadata.title }}
+        </div>
         <div class="credits">
             <p class="author">by {{ article.metadata.author }}</span></p>
         </div>
-		<div class="extra">
-			<p class="identifier">{{ article.metadata.identifier }}</p>
-		</div>
+        <div class="extra">
+            <p class="identifier">{{ article.metadata.identifier }}</p>
+        </div>
         <div class="tags">
-			<ul>
-				{% for tag in article.metadata.tags %}
-				<li class="information">{{ tag }}</li>
-				{% endfor %}
-			</ul>
-			<ul>
-				{% for warning in article.metadata.warnings %}
-				<li class="warning">{{ warning }}</li>
-				{% endfor %}
-			</ul>
-		</div>
-		<div class="date">
-			<p>{{ article.metadata | format_document_date }}</p>
-		</div>
-		<hr class="separator"/>
-		<div class="text">
-			{{ article.content | safe }}
-		</div>
-	</article>
+            <ul>
+                {% for tag in article.metadata.tags %}
+                <li class="information">{{ tag }}</li>
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for warning in article.metadata.warnings %}
+                <li class="warning">{{ warning }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="date">
+            <p>{{ article.metadata | format_document_date }}</p>
+        </div>
+        <hr class="separator"/>
+        <div class="text">
+            {{ article.content | safe }}
+        </div>
+    </article>
 </section>
 {% endblock %}
