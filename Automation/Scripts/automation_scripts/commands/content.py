@@ -4,12 +4,13 @@ import logging
 import os
 import shutil
 
+from bhamon_development_toolkit.automation.automation_command import AutomationCommand
+from bhamon_development_toolkit.automation.automation_command_group import AutomationCommandGroup
+from bhamon_development_toolkit.security.interactive_credentials_provider import InteractiveCredentialsProvider
+
 from automation_scripts.configuration.project_configuration import ProjectConfiguration
 from automation_scripts.configuration.project_environment import ProjectEnvironment
 from automation_scripts.helpers.content_importer import ContentImporter
-from automation_scripts.toolkit.automation.automation_command import AutomationCommand
-from automation_scripts.toolkit.automation.automation_command_group import AutomationCommandGroup
-from automation_scripts.toolkit.security.interactive_credentials_provider import InteractiveCredentialsProvider
 from automation_scripts.toolkit.web.web_client import WebClient
 
 
@@ -19,7 +20,7 @@ logger = logging.getLogger("Main")
 class ContentCommand(AutomationCommandGroup):
 
 
-    def configure_argument_parser(self, subparsers: argparse._SubParsersAction) -> argparse.ArgumentParser:
+    def configure_argument_parser(self, subparsers: argparse._SubParsersAction, **kwargs) -> argparse.ArgumentParser:
         local_parser: argparse.ArgumentParser = subparsers.add_parser("content", help = "execute commands related to content")
 
         command_collection = [
@@ -34,18 +35,18 @@ class ContentCommand(AutomationCommandGroup):
         return local_parser
 
 
-    def check_requirements(self) -> None:
+    def check_requirements(self, arguments: argparse.Namespace, **kwargs) -> None:
         pass
 
 
 class _ClearCommand(AutomationCommand):
 
 
-    def configure_argument_parser(self, subparsers: argparse._SubParsersAction) -> argparse.ArgumentParser:
+    def configure_argument_parser(self, subparsers: argparse._SubParsersAction, **kwargs) -> argparse.ArgumentParser:
         return subparsers.add_parser("clean", help = "clear local content")
 
 
-    def check_requirements(self) -> None:
+    def check_requirements(self, arguments: argparse.Namespace, **kwargs) -> None:
         pass
 
 
@@ -58,14 +59,18 @@ class _ClearCommand(AutomationCommand):
             os.makedirs(local_content_directory)
 
 
+    async def run_async(self, arguments: argparse.Namespace, simulate: bool, **kwargs) -> None:
+        self.run(arguments, simulate = simulate, **kwargs)
+
+
 class _PackageCommand(AutomationCommand):
 
 
-    def configure_argument_parser(self, subparsers: argparse._SubParsersAction) -> argparse.ArgumentParser:
+    def configure_argument_parser(self, subparsers: argparse._SubParsersAction, **kwargs) -> argparse.ArgumentParser:
         return subparsers.add_parser("package", help = "create a content package from local content")
 
 
-    def check_requirements(self) -> None:
+    def check_requirements(self, arguments: argparse.Namespace, **kwargs) -> None:
         pass
 
 
@@ -82,16 +87,20 @@ class _PackageCommand(AutomationCommand):
             os.replace(artifact_path + ".tmp.zip", artifact_path + ".zip")
 
 
+    async def run_async(self, arguments: argparse.Namespace, simulate: bool, **kwargs) -> None:
+        self.run(arguments, simulate = simulate, **kwargs)
+
+
 class _UpdateCommand(AutomationCommand):
 
 
-    def configure_argument_parser(self, subparsers: argparse._SubParsersAction) -> argparse.ArgumentParser:
+    def configure_argument_parser(self, subparsers: argparse._SubParsersAction, **kwargs) -> argparse.ArgumentParser:
         parser = subparsers.add_parser("update", help = "update local content by importing from a content source")
         parser.add_argument("--source", required = True, help = "set the source directory for the content")
         return parser
 
 
-    def check_requirements(self) -> None:
+    def check_requirements(self, arguments: argparse.Namespace, **kwargs) -> None:
         pass
 
 
@@ -131,14 +140,18 @@ class _UpdateCommand(AutomationCommand):
             os.rename(local_content_directory + ".tmp", local_content_directory)
 
 
+    async def run_async(self, arguments: argparse.Namespace, simulate: bool, **kwargs) -> None:
+        self.run(arguments, simulate = simulate, **kwargs)
+
+
 class _UploadCommand(AutomationCommand):
 
 
-    def configure_argument_parser(self, subparsers: argparse._SubParsersAction) -> argparse.ArgumentParser:
+    def configure_argument_parser(self, subparsers: argparse._SubParsersAction, **kwargs) -> argparse.ArgumentParser:
         return subparsers.add_parser("upload", help = "upload a content package to the content repository")
 
 
-    def check_requirements(self) -> None:
+    def check_requirements(self, arguments: argparse.Namespace, **kwargs) -> None:
         pass
 
 
@@ -157,6 +170,10 @@ class _UploadCommand(AutomationCommand):
         logger.info("Uploading content package for '%s'", project_configuration.content_identifier)
         if not simulate:
             web_client.upload_file(archive_remote_url, archive_path)
+
+
+    async def run_async(self, arguments: argparse.Namespace, simulate: bool, **kwargs) -> None:
+        self.run(arguments, simulate = simulate, **kwargs)
 
 
 def get_artifact_path(project_configuration: ProjectConfiguration) -> str:

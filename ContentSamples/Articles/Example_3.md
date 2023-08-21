@@ -2,6 +2,7 @@
 
 Identifier: 3b466cc7-2f23-4301-8fcd-53e487b7d61e
 Title: This Is An Example Article (3)
+Author: Benjamin Hamon
 
 Tags:
 - Topics::Fiction
@@ -10,13 +11,15 @@ Tags:
 - Media::MyBook::TheMainCharacter
 
 Warnings:
-- Full spoilers for MyBook
+- Spoilers::MyBook
 
 Excerpt: |
   A captivating article about something and this is its excerpt (3).
 
 ---
 
+
+<p class="warning">This article contains heavy spoilers for MyBook.</p>
 
 # H1
 ## H2

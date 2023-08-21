@@ -1,0 +1,101 @@
+/* Home */
+
+.link-entry > a
+{
+	text-align: center;
+	text-decoration: none;
+}
+
+
+
+/* Articles */
+
+.article-entry > .credits
+{
+	text-indent: 1em;
+}
+
+.article-entry > .extra
+{
+	display: none;
+}
+
+.article-entry > .warnings
+{
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+.article-entry > .warnings > ul
+{
+	display: flex;
+	flex-direction: column;
+	gap: 0.4em;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.article-entry > .warnings > ul > li
+{
+	padding: 0.5em 0.75em;
+	color: #aa0000;
+    background-color: #ffeebb;
+	font-size: 1.2em;
+}
+
+.article-entry > .tags
+{
+	display: flex;
+	flex-direction: column;
+	gap: 0.4em;
+}
+
+.article-entry > .tags > ul
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0.4em;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.article-entry > .tags > ul > li
+{
+	padding: 0 0.4em;
+	border-radius: 4px;
+}
+
+.article-entry > .tags > ul > li.information
+{
+    background-color: #bbddff;
+}
+
+
+.article-entry > .tags > ul > li.warning
+{
+    background-color: #ffeebb;
+}
+
+.article-entry > .date
+{
+	color: #555555;
+	text-align: right;
+}
+
+
+
+/* Contact */
+
+.contact-entry > div.link
+{
+	text-align: center;
+}
+
+.contact-entry > div.link > a
+{
+	text-decoration: none;
+}

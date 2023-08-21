@@ -1,0 +1,124 @@
+html
+{
+	overflow-y: scroll;
+	height: 100%;
+}
+
+body
+{
+	display: grid;
+	grid-template-columns: auto minmax(400px, 800px) auto;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas:
+		"header header header"
+		". main ."
+		". footer .";
+	margin: 0 auto;
+	padding: 0;
+	min-height: 100%;
+	font-family: "Carlito", sans-serif;
+	background-color: #dddddd;
+}
+
+header { grid-area: header; }
+main { grid-area: main; }
+footer { grid-area: footer; }
+
+header
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	column-gap: 5em;
+	row-gap: 0.5em;
+	background-color: #222222;
+}
+
+@media (max-width: 800px)
+{
+	header
+	{
+		flex-direction: column;
+	}
+}
+
+header > .title
+{
+	font-size: 1.5em;
+	font-style: italic;
+}
+
+header > .title > a
+{
+	text-decoration: none;
+	color: #eeeeee;
+}
+
+header > nav
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+}
+
+header > nav > a
+{
+	flex-grow: 1;
+	max-width: 200px;
+	min-width: 100px;
+	padding: 0.25em 0.5em;
+	font-size: 1.2em;
+	text-decoration: none;
+	color: #eeeeee;
+}
+
+header > nav > a:hover, nav > a:focus
+{
+	color: #99ccff;
+}
+
+header > nav > .selected, nav > .selected:focus, nav > .selected:hover
+{
+	background-color: #4488cc;
+	color: #eeeeee;
+}
+
+main
+{
+	display: flex;
+	flex-direction: column;
+	padding: 1em;
+	gap: 1em;
+	line-height: 1.5em;
+	background-color: #dddddd;
+}
+
+footer
+{
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+	margin-bottom: 1em;
+	text-align: center;
+	font-size: 0.8em;
+	background-color: #dddddd;
+	color: #555555;
+}
+
+footer > div
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	column-gap: 1em;
+	row-gap: 0.5em;
+}
+
+footer > div > a
+{
+	text-decoration: none;
+}

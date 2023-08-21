@@ -1,0 +1,116 @@
+h1, p, ul
+{
+	margin: 0;
+}
+
+button, input
+{
+	font-family: inherit;
+	font-size: 1em;
+}
+
+main > section
+{
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+	gap: 1em;
+}
+
+main > section > article
+{
+	display: flex;
+	flex-direction: column;
+	padding: 1em;
+	gap: 1em;
+	box-shadow: 0 0 5px #999999;
+	background-color: #fff;
+}
+
+article > div.heading
+{
+	display: flex;
+	flex-direction: row;
+	font-size: 2em;
+	line-height: 1em;
+}
+
+article > div.heading a
+{
+	text-decoration: none;
+}
+
+article > div.text
+{
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+article .separator
+{
+    border: 1px solid #dddddd;
+    width: 40%;
+}
+
+article > div.text > h1
+{
+	font-size: 1.5em;
+	margin-top: 2em;
+	margin-bottom: 1em;
+}
+
+article > div.text > blockquote
+{
+	background-color: #eeeeee;
+	border-radius: 0.5em;
+	color: #005555;
+	margin: 0.5em 0 1em 0;
+	padding: 0.5em 0.75em;
+}
+
+article > div.text p
+{
+	line-height: 1.5em;
+	text-align: justify;
+	text-indent: 1em;
+}
+
+article > div.text .warning
+{
+	margin-bottom: 0.5em;
+	padding: 0.5em 0.75em;
+	font-size: 1.25em;
+	font-style: italic;
+	text-align: center;
+	text-indent: 0;
+	color: #aa0000;
+    background-color: #ffeebb;
+}
+
+article > div.text p span
+{
+	display: inline-block;
+	text-indent: 0;
+}
+
+article.welcome
+{
+	font-style: italic;
+	font-weight: bold;
+	text-align: center;
+}
+
+article.welcome > div.text p
+{
+	font-style: italic;
+	font-weight: bold;
+	text-align: center;
+	text-indent: 0;
+}
+
+article.error-message
+{
+	font-weight: bold;
+	text-align: center;
+}
