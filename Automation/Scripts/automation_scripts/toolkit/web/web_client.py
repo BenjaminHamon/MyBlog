@@ -18,8 +18,8 @@ class WebClient:
 
     def upload_file(self, url: str, file_path: str) -> None:
         with open(file_path, mode = "rb") as file_to_upload:
-            files = { "file": file_to_upload }
+            headers = { "Content-Type": "application/octet-stream" }
 
             logger.debug("PUT %s", url)
-            response = requests.put(url, auth = self._authentication, files = files, timeout = self.timeout.total_seconds())
+            response = requests.put(url, auth = self._authentication, headers = headers, data = file_to_upload, timeout = self.timeout.total_seconds())
             response.raise_for_status()
