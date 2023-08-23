@@ -10,6 +10,7 @@ from bhamon_development_toolkit.processes.process_runner import ProcessRunner
 from bhamon_development_toolkit.processes.process_spawner import ProcessSpawner
 from bhamon_development_toolkit.python.pylint_runner import PylintRunner
 from bhamon_development_toolkit.python.pylint_scope import PylintScope
+from bhamon_development_toolkit.python.python_package import PythonPackage
 
 from automation_scripts.configuration.project_configuration import ProjectConfiguration
 
@@ -42,7 +43,7 @@ class LintCommand(AutomationCommand):
 
         all_python_scopes: List[PylintScope] = []
         for python_package in project_configuration.list_python_packages():
-            all_python_scopes.append(PylintScope(identifier = python_package.identifier, path_or_module = python_package.name_for_module_import))
+            all_python_scopes.extend(get_scopes(python_package))
 
         run_identifier: Optional[str] = arguments.run_identifier
         if run_identifier is None:
@@ -51,3 +52,18 @@ class LintCommand(AutomationCommand):
         result_directory = os.path.join("Artifacts", "LintResults")
 
         await pylint_runner.run(all_python_scopes, run_identifier, result_directory, simulate = simulate)
+
+
+def get_scopes(python_package: PythonPackage) -> List[PylintScope]:
+    scopes_for_package: List[PylintScope] = []
+
+    scopes_for_package.append(PylintScope(
+        identifier = python_package.identifier,
+        path_or_module = os.path.join(python_package.path_to_sources, python_package.name_for_file_system )))
+
+    if python_package.path_to_tests is not None:
+        scopes_for_package.append(PylintScope(
+                identifier = python_package.identifier + "-tests",
+                path_or_module = os.path.join(python_package.path_to_tests, python_package.name_for_file_system + "_tests" )))
+
+    return scopes_for_package
