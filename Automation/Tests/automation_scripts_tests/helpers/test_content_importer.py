@@ -13,6 +13,7 @@ def test_parse_document():
 ---
 Identifier: my_identifier
 Title: my_title
+Author: my_author
 ---
 
 Some text.
@@ -34,6 +35,7 @@ def test_parse_document_with_extra_separator():
 ---
 Identifier: my_identifier
 Title: my_title
+Author: my_author
 ---
 
 Some text.
@@ -72,6 +74,7 @@ def test_parse_document_with_mismatch_separators():
 ---
 Identifier: my_identifier
 Title: my_title
+Author: my_author
 
 Some text.
 
