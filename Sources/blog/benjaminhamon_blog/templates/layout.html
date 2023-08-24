@@ -37,8 +37,8 @@
             </div>
             <div>
                 <a href="https://www.benjaminhamon.com">Portal</a>
-                <a href="https://github.com/BenjaminHamon/MyBlog/">Sources</a>
-                <a href="mailto:development@benjaminhamon.com">Contact</a>
+                <a href="{{ config['WEBSITE_SOURCES_URL'] }}">Sources</a>
+                <a href="mailto:{{ config['WEBSITE_CONTACT_EMAIL'] }}">Contact</a>
             </div>
             <div>
                 {% if config['WEBSITE_VERSION'] %}
