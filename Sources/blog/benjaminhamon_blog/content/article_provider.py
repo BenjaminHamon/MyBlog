@@ -12,6 +12,10 @@ class ArticleProvider:
         self._article_loader = article_loader
 
 
+    def get_article_count(self) -> int:
+        return len(self._article_loader.load_all_metadata())
+
+
     def list_articles(self, skip: int = 0, limit: Optional[int] = None) -> List[DocumentMetadata]:
         all_articles = self._article_loader.load_all_metadata()
         all_articles.sort(key = lambda x: x.creation_date, reverse = True)

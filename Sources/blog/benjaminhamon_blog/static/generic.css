@@ -114,3 +114,36 @@ article.error-message
 	font-weight: bold;
 	text-align: center;
 }
+
+.pagination
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.pagination > div
+{
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+}
+
+.pagination > div > p
+{
+	margin: 0 5px;
+}
+
+.pagination > div > a
+{
+	margin: 0 5px;
+	color: #4488cc;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.pagination > div > .disabled
+{
+	visibility: hidden;
+}

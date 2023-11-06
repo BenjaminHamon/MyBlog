@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% import 'macros.html' as shared_macros %}
 
 {% block content %}
 
@@ -37,6 +38,8 @@
     </article>
 
     {% endfor %}
+
+    {{ shared_macros.pagination_div('main_controller.article_collection', pagination) }}
 
 </section>
 
