@@ -24,7 +24,7 @@ class MainController:
 
     def article(self, identifier_or_alias: str) -> str:
         try:
-            article = self._article_provider.load_article(identifier_or_alias)
+            article = self._article_provider.get_article(identifier_or_alias)
         except ContentNotFoundException as exception:
             raise NotFound() from exception
 

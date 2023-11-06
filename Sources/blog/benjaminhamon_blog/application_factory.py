@@ -9,6 +9,7 @@ import werkzeug.exceptions
 import benjaminhamon_blog
 from benjaminhamon_blog import jinja_operations
 from benjaminhamon_blog.application import Application
+from benjaminhamon_blog.content.article_loader_implementation import ArticleLoaderImplementation
 from benjaminhamon_blog.content.article_provider import ArticleProvider
 from benjaminhamon_blog.main_controller import MainController
 
@@ -21,7 +22,8 @@ def create_application(title: str, content_directory: str) -> Application:
     sources_url = "https://github.com/BenjaminHamon/MyBlog"
     contact_email = "development@benjaminhamon.com"
 
-    article_provider = ArticleProvider(os.path.join(content_directory, "Articles"))
+    article_loader = ArticleLoaderImplementation(os.path.join(content_directory, "Articles"))
+    article_provider = ArticleProvider(article_loader)
     main_controller = MainController(article_provider)
 
     flask_application = flask.Flask("benjaminhamon_blog")
