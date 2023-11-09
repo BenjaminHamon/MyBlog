@@ -80,6 +80,12 @@
     background-color: #ffeebb;
 }
 
+.article-entry > .tags > ul > li > a
+{
+	color: inherit;
+	text-decoration: none;
+}
+
 .article-entry > .date
 {
 	color: #555555;

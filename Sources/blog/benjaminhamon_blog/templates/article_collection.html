@@ -1,8 +1,16 @@
 {% extends 'layout.html' %}
+{% import 'macros.html' as shared_macros %}
 
 {% block content %}
 
 <section>
+
+    <div class="search">
+        <form method="get" action="{{ url_for('main_controller.article_collection') }}">
+            <input type="search" id="input-search" name="search" value="{{ request.args.get('search') if request.args.get('search') else '' }}" autofocus/>
+			<button type="submit">Search</button>
+		</form>
+    </div>
 
     {% for article in article_collection %}
 
@@ -19,7 +27,9 @@
         <div class="tags">
             <ul>
                 {% for tag in article.tags %}
-                <li class="information">{{ tag }}</li>
+                <li class="information">
+                    <a href="{{ url_for('main_controller.article_collection', search = 'tag:%r' % tag) }}">{{ tag }}</a>
+                </li>
                 {% endfor %}
             </ul>
             <ul>
@@ -37,6 +47,8 @@
     </article>
 
     {% endfor %}
+
+    {{ shared_macros.pagination_div('main_controller.article_collection', pagination) }}
 
 </section>
 

@@ -33,6 +33,7 @@ def run_setup() -> None:
             "Flask ~= 2.3.2",
             "python-dateutil ~= 2.8.2",
             "PyYAML ~= 6.0.1",
+            "Whoosh ~= 2.7.4",
         ],
 
         package_data = {

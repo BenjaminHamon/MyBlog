@@ -1,3 +1,5 @@
+# cspell:words filedb filestore
+
 import logging
 import os
 from typing import Callable, List
@@ -5,12 +7,18 @@ from typing import Callable, List
 import flask
 import jinja2
 import werkzeug.exceptions
+import whoosh.fields
+import whoosh.filedb.filestore
+import whoosh.index
 
 import benjaminhamon_blog
 from benjaminhamon_blog import jinja_operations
 from benjaminhamon_blog.application import Application
+from benjaminhamon_blog.content.article_loader_implementation import ArticleLoaderImplementation
 from benjaminhamon_blog.content.article_provider import ArticleProvider
 from benjaminhamon_blog.main_controller import MainController
+from benjaminhamon_blog.search import whoosh_helpers
+from benjaminhamon_blog.search.whoosh_search_engine import WhooshSearchEngine
 
 
 main_logger = logging.getLogger("Website")
@@ -21,7 +29,7 @@ def create_application(title: str, content_directory: str) -> Application:
     sources_url = "https://github.com/BenjaminHamon/MyBlog"
     contact_email = "development@benjaminhamon.com"
 
-    article_provider = ArticleProvider(os.path.join(content_directory, "Articles"))
+    article_provider = create_article_provider(content_directory)
     main_controller = MainController(article_provider)
 
     flask_application = flask.Flask("benjaminhamon_blog")
@@ -32,6 +40,22 @@ def create_application(title: str, content_directory: str) -> Application:
     register_routes(flask_application, main_controller)
 
     return application
+
+
+def create_article_provider(content_directory: str) -> ArticleProvider:
+    article_loader = ArticleLoaderImplementation(os.path.join(content_directory, "Articles"))
+
+    schema = whoosh_helpers.create_schema_for_documents()
+    index_storage = whoosh.filedb.filestore.RamStorage()
+    index = whoosh.index.FileIndex.create(index_storage, schema)
+
+    all_articles = article_loader.load_all_metadata()
+    whoosh_helpers.update_index_for_documents(index, all_articles)
+
+    search_engine = WhooshSearchEngine(index)
+    article_provider = ArticleProvider(article_loader, search_engine)
+
+    return article_provider
 
 
 def configure(application: flask.Flask, title: str, sources_url: str, contact_email: str) -> None:

@@ -5,3 +5,30 @@
 <a href="{{ url_for(endpoint) }}">{{ text }}</a>
 {%- endif %}
 {% endmacro %}
+
+{% macro pagination_div(endpoint, cursor) %}
+<div class="pagination">
+    <div class="previous">
+        {% if cursor.page_number == 1 %}
+        <a href="{{ url_for(endpoint, page = 1, item_count = cursor.item_count, **cursor.url_arguments) }}" title="First page" class="disabled"> << </a>
+        <a href="{{ url_for(endpoint, page = 1, item_count = cursor.item_count, **cursor.url_arguments) }}" title="Previous page" class="disabled"> < </a>
+        {% else %}
+        <a href="{{ url_for(endpoint, page = 1, item_count = cursor.item_count, **cursor.url_arguments) }}" title="First page"> << </a>
+        <a href="{{ url_for(endpoint, page = cursor.page_number - 1, item_count = cursor.item_count, **cursor.url_arguments) }}" title="Previous page"> < </a>
+        {% endif %}
+    </div>
+    <div class="information">
+        <p>Page {{ cursor.page_number }} / {{ cursor.page_total }}</p>
+        <p>({{ cursor.item_total }} items)</p>
+    </div>
+    <div class="next">
+        {% if cursor.page_number == cursor.page_total %}
+        <a href="{{ url_for(endpoint, page = cursor.page_total, item_count = cursor.item_count, **cursor.url_arguments) }}" title="Next page" class="disabled"> > </a>
+        <a href="{{ url_for(endpoint, page = cursor.page_total, item_count = cursor.item_count, **cursor.url_arguments) }}" title="Last page" class="disabled"> >> </a>
+        {% else %}
+        <a href="{{ url_for(endpoint, page = cursor.page_number + 1, item_count = cursor.item_count, **cursor.url_arguments) }}" title="Next page"> > </a>
+        <a href="{{ url_for(endpoint, page = cursor.page_total, item_count = cursor.item_count, **cursor.url_arguments) }}" title="Last page"> >> </a>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
