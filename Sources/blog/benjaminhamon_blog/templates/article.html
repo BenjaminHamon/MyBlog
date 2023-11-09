@@ -15,7 +15,9 @@
         <div class="tags">
             <ul>
                 {% for tag in article.metadata.tags %}
-                <li class="information">{{ tag }}</li>
+                <li class="information">
+                    <a href="{{ url_for('main_controller.article_collection', search = 'tag:%r' % tag) }}">{{ tag }}</a>
+                </li>
                 {% endfor %}
             </ul>
             <ul>

@@ -7,7 +7,12 @@ button, input
 {
 	font-family: inherit;
 	font-size: 1em;
+	padding: 0.5em;
 }
+
+
+
+/* Content */
 
 main > section
 {
@@ -114,6 +119,26 @@ article.error-message
 	font-weight: bold;
 	text-align: center;
 }
+
+
+
+/* Search */
+
+.search > form
+{
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+}
+
+.search > form > #input-search
+{
+	flex-grow: 1;
+}
+
+
+
+/* Pagination */
 
 .pagination
 {

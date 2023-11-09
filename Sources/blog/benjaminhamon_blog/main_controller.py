@@ -35,10 +35,11 @@ class MainController:
                 url_arguments = url_arguments,
             )
 
-        item_total = self._article_provider.get_article_count()
-        pagination = get_pagination(item_total, {})
+        search_query = flask.request.args.get("search", default = None)
+        item_total = self._article_provider.get_article_count(search_query)
+        pagination = get_pagination(item_total, { "search": search_query })
 
-        article_collection = self._article_provider.list_articles(skip = pagination.skip, limit = pagination.limit)
+        article_collection = self._article_provider.list_articles(query = search_query, skip = pagination.skip, limit = pagination.limit)
         return flask.render_template("article_collection.html", title = "Article Collection", article_collection = article_collection, pagination = pagination)
 
 
