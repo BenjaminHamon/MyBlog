@@ -13,8 +13,8 @@ Tags:
 Warnings:
 - Spoilers::MyBook
 
-Excerpt: |
-  A captivating article about something and this is its excerpt (3).
+Description: |
+  A captivating article about something and this is its description (3).
 
 ---
 

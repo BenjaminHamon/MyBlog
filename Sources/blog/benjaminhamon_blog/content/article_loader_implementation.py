@@ -62,7 +62,7 @@ class ArticleLoaderImplementation(ArticleLoader):
                     author = document_metadata_from_yaml["author"],
                     tags = document_metadata_from_yaml.get("tags", []),
                     warnings = document_metadata_from_yaml.get("warnings", []),
-                    excerpt = document_metadata_from_yaml.get("excerpt", []),
+                    description = document_metadata_from_yaml.get("description", ""),
                     creation_date = document_metadata_from_yaml.get("creation_date"),
                     update_date = document_metadata_from_yaml.get("update_date"),
                 ))

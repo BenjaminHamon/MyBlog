@@ -36,7 +36,7 @@ def test_search_with_identifier():
             author = "The Author",
             tags = [],
             warnings = [],
-            excerpt = "",
+            description = "",
             creation_date = datetime.datetime.min,
             update_date = datetime.datetime.min,
         )
@@ -63,7 +63,7 @@ def test_search_with_text():
             author = "The Author",
             tags = [],
             warnings = [],
-            excerpt = "",
+            description = "",
             creation_date = datetime.datetime.min,
             update_date = datetime.datetime.min,
         )
@@ -97,7 +97,7 @@ def test_search_with_keyword():
             author = "The Author",
             tags = [ "MyTag" ],
             warnings = [],
-            excerpt = "",
+            description = "",
             creation_date = datetime.datetime.min,
             update_date = datetime.datetime.min,
         )
@@ -131,7 +131,7 @@ def test_search_with_namespaced_keyword():
             author = "The Author",
             tags = [ "MyCategory::MySubcategory::MyTag" ],
             warnings = [],
-            excerpt = "",
+            description = "",
             creation_date = datetime.datetime.min,
             update_date = datetime.datetime.min,
         )
@@ -181,7 +181,7 @@ def test_search_with_many_items():
             author = "The Author",
             tags = [ "MyTag" ],
             warnings = [],
-            excerpt = "",
+            description = "",
             creation_date = datetime.datetime.min,
             update_date = datetime.datetime.min,
         ))

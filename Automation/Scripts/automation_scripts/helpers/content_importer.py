@@ -113,7 +113,7 @@ class ContentImporter:
                 author = document_metadata_from_yaml["Author"],
                 tags = document_metadata_from_yaml.get("Tags", []),
                 warnings = document_metadata_from_yaml.get("Warnings", []),
-                excerpt = document_metadata_from_yaml.get("Excerpt", []),
+                description = document_metadata_from_yaml.get("Description", ""),
             )
         except KeyError as exception:
             raise KeyError("Missing metadata field: '%s'" % exception.args[0]) from exception

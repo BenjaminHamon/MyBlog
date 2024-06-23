@@ -15,7 +15,7 @@ def test_format_date():
         "author": "MyAuthor",
         "tags": [],
         "warnings": [],
-        "excerpt": "",
+        "description": "",
     }
 
     metadata = DocumentMetadata(**metadata_as_dict, creation_date = base_date, update_date = base_date)
