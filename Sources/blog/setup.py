@@ -1,3 +1,5 @@
+# cspell:words dateutil
+
 import os
 import sys
 

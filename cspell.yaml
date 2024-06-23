@@ -1,4 +1,19 @@
+---
+
+# cspell:words pycache venv
+
+ignorePaths:
+  - ".venv/**"
+  - "**/__pycache__/**"
+  - "**/*.egg-info/**"
+  - "Artifacts/**"
+  - "Content/**"
+  - "Sources/*/build/**"
+
 words:
-- benjaminhamon
-- bhamon
-- werkzeug
+  - benjaminhamon
+  - bhamon
+  - hamon
+
+enableFiletypes:
+  - jinja-html

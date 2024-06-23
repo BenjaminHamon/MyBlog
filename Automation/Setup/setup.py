@@ -1,3 +1,5 @@
+# cspell:words pyvenv
+
 import argparse
 import logging
 import os
