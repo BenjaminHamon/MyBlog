@@ -1,3 +1,5 @@
+# cspell:words werkzeug
+
 import argparse
 import importlib
 import logging

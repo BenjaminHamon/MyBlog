@@ -34,12 +34,12 @@ def run_setup() -> None:
         extras_require = {
             "dev": [
                 "bhamon-development-toolkit ~= 2.0.1",
-                "mockito ~= 1.4.0",
-                "pylint ~= 2.17.5",
-                "pytest ~= 7.4.0",
-                "pytest-asyncio ~= 0.21.1",
+                "mockito ~= 1.5.0",
+                "pylint ~= 3.2.3",
+                "pytest ~= 8.2.2",
+                "pytest-asyncio ~= 0.23.7",
                 "pytest-json ~= 0.4.0",
-                "twine ~= 4.0.2",
+                "twine ~= 5.1.0",
             ],
         },
     )

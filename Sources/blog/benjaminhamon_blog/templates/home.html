@@ -31,7 +31,9 @@
         <div class="tags">
             <ul>
                 {% for tag in article.tags %}
-                <li class="information">{{ tag }}</li>
+                <li class="information">
+                    <a href="{{ url_for('main_controller.article_collection', search = 'tag:%r' % tag) }}">{{ tag }}</a>
+                </li>
                 {% endfor %}
             </ul>
             <ul>
@@ -40,8 +42,8 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="excerpt">
-            {{ article.excerpt | safe }}
+        <div class="description">
+            {{ article.description | safe }}
         </div>
         <div class="date">
             <p>{{ article | format_document_date }}</p>

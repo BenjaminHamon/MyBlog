@@ -1,3 +1,5 @@
+# cspell:words dateutil
+
 import os
 import sys
 
@@ -30,9 +32,10 @@ def run_setup() -> None:
         python_requires = "~= 3.9",
 
         install_requires = [
-            "Flask ~= 2.3.2",
-            "python-dateutil ~= 2.8.2",
+            "Flask ~= 3.0.3",
+            "python-dateutil ~= 2.9.0",
             "PyYAML ~= 6.0.1",
+            "Whoosh ~= 2.7.4",
         ],
 
         package_data = {

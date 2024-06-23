@@ -1,8 +1,11 @@
+import math
+
 import flask
 from werkzeug.exceptions import NotFound
 
 from benjaminhamon_blog.content.article_provider import ArticleProvider
 from benjaminhamon_blog.content.exceptions.content_not_found_exception import ContentNotFoundException
+from benjaminhamon_blog.pagination_cursor import PaginationCursor
 
 
 class MainController:
@@ -18,13 +21,31 @@ class MainController:
 
 
     def article_collection(self) -> str:
-        article_collection = self._article_provider.list_articles()
-        return flask.render_template("article_collection.html", title = "Article Collection", article_collection = article_collection)
+
+        def get_pagination(item_total: int, url_arguments: dict) -> PaginationCursor:
+            item_count = max(min(flask.request.args.get("item_count", default = 10, type = int), 50), 5)
+            page_total = max(int(math.ceil(item_total / item_count)), 1)
+            page_number = max(min(flask.request.args.get("page", default = 1, type = int), page_total), 1)
+
+            return PaginationCursor(
+                page_number = page_number,
+                page_total = page_total,
+                item_count = item_count,
+                item_total = item_total,
+                url_arguments = url_arguments,
+            )
+
+        search_query = flask.request.args.get("search", default = None)
+        item_total = self._article_provider.get_article_count(search_query)
+        pagination = get_pagination(item_total, { "search": search_query })
+
+        article_collection = self._article_provider.list_articles(query = search_query, skip = pagination.skip, limit = pagination.limit)
+        return flask.render_template("article_collection.html", title = "Article Collection", article_collection = article_collection, pagination = pagination)
 
 
     def article(self, identifier_or_alias: str) -> str:
         try:
-            article = self._article_provider.load_article(identifier_or_alias)
+            article = self._article_provider.get_article(identifier_or_alias)
         except ContentNotFoundException as exception:
             raise NotFound() from exception
 

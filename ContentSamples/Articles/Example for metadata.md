@@ -14,8 +14,8 @@ Warnings:
 - Spoilers::MyBook
 - Topics::AdultThemes
 
-Excerpt: |
-  A captivating article about something and this is its excerpt.
+Description: |
+  A captivating article about something and this is its description.
 
 ---
 

@@ -11,6 +11,6 @@ class DocumentMetadata:
     author: str
     tags: List[str]
     warnings: List[str]
-    excerpt: str
+    description: str
     creation_date: Optional[datetime.datetime] = None
     update_date: Optional[datetime.datetime] = None

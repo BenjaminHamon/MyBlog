@@ -1,4 +1,5 @@
 import argparse
+import os
 
 import mockito
 
@@ -10,6 +11,10 @@ from automation_scripts.configuration.project_configuration import ProjectConfig
 
 def test_run_with_simulate(tmpdir):
     with automation_helpers.execute_in_workspace(tmpdir):
+        os.makedirs("Content/Articles")
+        with open("Content/Articles/Metadata.yaml", mode = "w", encoding = "utf-8") as metadata_file:
+            metadata_file.write("[]")
+
         project_configuration = mockito.mock(spec = ProjectConfiguration)
 
         command = RunWebsiteCommand()

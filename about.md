@@ -1,3 +1,5 @@
+<!-- cspell:words dateutil werkzeug -->
+
 MyBlog is open source software.  
 The source code is available on [GitHub](https://github.com/BenjaminHamon/MyBlog), under the [MIT license](https://github.com/BenjaminHamon/MyBlog/blob/master/license.txt).
 
