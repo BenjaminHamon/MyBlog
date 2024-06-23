@@ -11,9 +11,6 @@
 # Environment
 /environment.json
 
-# Imported content
-/Content/
-
 # Logs
 *.log
 
